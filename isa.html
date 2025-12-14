@@ -1,2 +1,419 @@
-# FC22Isa
-cumpleaños 22 de la Isa
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz 22 Isa! 🎉</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+        }
+        
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ff2e8b 0%, #8a2be2 50%, #4a00e0 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Decoraciones flotantes */
+        .decoration {
+            position: fixed;
+            z-index: 1;
+            font-size: 2.5rem;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+        
+        .balloon1 { top: 10%; left: 5%; color: #ff6b9d; animation: float 6s ease-in-out infinite; }
+        .balloon2 { top: 15%; right: 8%; color: #8a6bff; animation: float 7s ease-in-out infinite 0.5s; }
+        .balloon3 { bottom: 20%; left: 7%; color: #ff9e00; animation: float 5s ease-in-out infinite 1s; }
+        .cake { bottom: 10%; right: 5%; color: #ff6b9d; animation: bounce 4s ease-in-out infinite; }
+        .gift1 { top: 25%; left: 15%; color: #06d6a0; animation: float 8s ease-in-out infinite 1.5s; }
+        .gift2 { top: 40%; right: 15%; color: #ff006e; animation: float 6s ease-in-out infinite 2s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* Contenedor principal */
+        .container {
+            background: white;
+            border-radius: 25px;
+            padding: 30px;
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 10;
+            border: 8px solid #ff9ec0;
+        }
+        
+        /* Título con 22 integrado */
+        .title {
+            color: #ff006e;
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+            text-shadow: 2px 2px 0 #ffd6e7;
+        }
+        
+        .title .age {
+            color: #8a6bff;
+            font-weight: bold;
+        }
+        
+        /* Mensaje */
+        .message {
+            font-size: 1.8rem;
+            color: #5a4a6e;
+            line-height: 1.5;
+            margin-bottom: 30px;
+            min-height: 120px;
+            padding: 20px;
+            background: #fff5f9;
+            border-radius: 20px;
+            border: 3px dashed #ff9ec0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Contenedor de medios INTERACTIVO */
+        .media-container {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            margin: 35px 0;
+            flex-wrap: wrap;
+        }
+        
+        /* Marcos interactivos SIN ETIQUETAS */
+        .media-frame {
+            width: 300px;
+            height: 300px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            border: 5px solid white;
+            background: white;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+        
+        .media-frame:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+        
+        .photo-frame {
+            border-color: #ff9ec0;
+        }
+        
+        .gif-frame {
+            border-color: #8a6bff;
+        }
+        
+        /* Efecto de brillo en los marcos */
+        .media-frame::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff006e, #8a6bff, #ff9e00, #06d6a0);
+            z-index: -1;
+            border-radius: 22px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .media-frame:hover::before {
+            opacity: 0.5;
+            animation: borderGlow 2s linear infinite;
+        }
+        
+        @keyframes borderGlow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.8; }
+        }
+        
+        /* Imágenes dentro de los marcos */
+        .frame-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f8f8ff, #fff0f8);
+            border-radius: 15px;
+        }
+        
+        .frame-content img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            transition: transform 0.5s ease;
+        }
+        
+        .media-frame:hover .frame-content img {
+            transform: scale(1.05);
+        }
+        
+        /* Área de controles */
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 25px;
+        }
+        
+        /* Contador */
+        .counter {
+            font-size: 1.2rem;
+            color: #ff6b9d;
+            font-weight: bold;
+            background: #fff5f9;
+            padding: 10px 20px;
+            border-radius: 25px;
+            border: 2px solid #ff9ec0;
+        }
+        
+        /* Botón */
+        .next-btn {
+            background: linear-gradient(45deg, #ff006e, #ff5e9d);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(255, 0, 110, 0.3);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+        }
+        
+        .next-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px rgba(255, 0, 110, 0.4);
+            background: linear-gradient(45deg, #ff5e9d, #ff006e);
+        }
+        
+        .next-btn i {
+            animation: arrowBounce 1s infinite alternate;
+        }
+        
+        @keyframes arrowBounce {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(5px); }
+        }
+        
+        /* Footer */
+        .footer {
+            margin-top: 30px;
+            color: #888;
+            font-style: italic;
+            border-top: 2px solid #ffe4ec;
+            padding-top: 20px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container { padding: 25px; border-width: 6px; }
+            .title { font-size: 2.3rem; }
+            .message { font-size: 1.6rem; }
+            .media-frame { width: 280px; height: 280px; }
+            .media-container { gap: 20px; }
+            .decoration { font-size: 2rem; }
+        }
+        
+        @media (max-width: 650px) {
+            .media-container { flex-direction: column; align-items: center; }
+            .media-frame { width: 100%; max-width: 350px; }
+            .controls { flex-direction: column; gap: 20px; }
+            .counter { order: 2; }
+            .next-btn { order: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Decoraciones flotantes -->
+    <div class="decoration balloon1"><i class="fas fa-birthday-cake"></i></div>
+    <div class="decoration balloon2"><i class="fas fa-gift"></i></div>
+    <div class="decoration balloon3"><i class="fas fa-heart"></i></div>
+    <div class="decoration cake"><i class="fas fa-birthday-cake"></i></div>
+    <div class="decoration gift1"><i class="fas fa-gift"></i></div>
+    <div class="decoration gift2"><i class="fas fa-star"></i></div>
+    
+    <div class="container">
+        <h1 class="title">¡Feliz Cumpleaños <span class="age">22</span> Isa! 🎂</h1>
+        
+        <div class="message" id="message">
+            ¡Kubo Isa! Hoy celebramos tus 22 años. La mejor ñaña que alguien quisiera tener. 💖
+        </div>
+        
+        <div class="media-container">
+            <!-- Marco de foto SIN ETIQUETA -->
+            <div class="media-frame photo-frame">
+                <div class="frame-content">
+                    <img id="photo" src="" alt="Para Isa">
+                </div>
+            </div>
+            
+            <!-- Marco de GIF SIN ETIQUETA -->
+            <div class="media-frame gif-frame">
+                <div class="frame-content">
+                    <img id="gif" src="" alt="Celebración">
+                </div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <div class="counter" id="counter">Mensaje 1 de 7</div>
+            <button class="next-btn" id="next-btn">
+                <i class="fas fa-arrow-right"></i> Siguiente
+            </button>
+        </div>
+        
+        <div class="footer">
+            <p>Para Isa, con cariño sin prisa, ojalá no te de risa ✨</p>
+          <p>Domingo, 14 de Diciembre del 2025</p>
+        </div>
+    </div>
+
+    <script>
+        // ===== TUS 7 FOTOS DE IMGFZ.COM (YA INCLUIDAS) =====
+        const photoLinks = [
+            "http://imgfz.com/i/toTnPrq.jpeg",  // Foto 1
+            "http://imgfz.com/i/01nIa83.jpeg",  // Foto 2
+            "http://imgfz.com/i/kazCb2i.jpeg",  // Foto 3
+            "http://imgfz.com/i/1gKO7fF.jpeg",  // Foto 4
+            "http://imgfz.com/i/1Z9T8Es.jpeg",  // Foto 5
+            "http://imgfz.com/i/gybLet1.jpeg",  // Foto 6
+            "http://imgfz.com/i/0wxTvl6.jpeg"   // Foto 7
+        ];
+        
+        const gifLinks = [
+            "https://i.pinimg.com/originals/0b/0d/12/0b0d1237a575d53ab023f199a61bec99.gif",
+            "https://i.pinimg.com/originals/ab/a9/7d/aba97d301a4019da712f0c4f95ab5dde.gif",
+            "https://media1.tenor.com/m/yvrzcQwIZrMAAAAd/joel-gonzales-al-fondo-hay-sitio.gif",
+            "https://i.pinimg.com/originals/a8/ec/88/a8ec886e2e1bfd28aeabb1825d33622f.gif",
+            "https://i.pinimg.com/originals/2b/81/2a/2b812a32e29f0016bbbfb4cb487701df.gif",
+            "https://i.pinimg.com/originals/50/9b/67/509b67f89c4830e9e7e83ea32c6a8583.gif",
+            "https://i.pinimg.com/originals/63/ea/94/63ea94114d5301842ab225f6fc192b5e.gif"
+        ];
+        
+        const messages = [
+            "Hoy cumples 22 y quise empezar diciendo algo que no siempre puedo expresar, pero te admiro demasiado por lo mucho que haces por nosostros. Feliz Cumpleaños🎁",
+            "Recuerdo cómo siempre tratabas de sonreír, a pesar de todo lo que ha pasado. Y creo que por eso te admiro.",
+            "De pequeños jugabamos mucho, todas las películas y todas las series que alguna vez vimos, todo era el goce contigo.",
+            "Todo lo que soy, casi siempre fue gracias a ti, que este nuevo año te traiga viajes, risas, y todo lo que mereces. ✈️",
+            "Que este nuevo año nos haga más unidos, siempre puedes confiar en mi, tal vez casi nunca lo digo, no somos perfectos pero seguimos siendo hermanos.",
+            "Siempre se la gran persona que eres, todo el esfuerzo que haces va a valer la pena, confía en ti y todo lo que haces.✨",
+            "Feliz cumpleaños, Isa. Gracias por ser quien eres y por todo lo que haces. Con todo lo vivido, me quedo orgulloso de ser tu hermano menor, hoy y siempre."
+        ];
+        
+        let currentIndex = 0;
+        const messageElement = document.getElementById('message');
+        const photoElement = document.getElementById('photo');
+        const gifElement = document.getElementById('gif');
+        const counterElement = document.getElementById('counter');
+        const nextBtn = document.getElementById('next-btn');
+        
+        // Mostrar primer mensaje
+        showMessage(currentIndex);
+        
+        function showMessage(index) {
+            messageElement.textContent = messages[index];
+            photoElement.src = photoLinks[index];
+            gifElement.src = gifLinks[index];
+            counterElement.textContent = `Mensaje ${index + 1} de ${messages.length}`;
+            
+            // Cambiar texto del botón si es el último mensaje
+            if (index === messages.length - 1) {
+                nextBtn.innerHTML = '<i class="fas fa-redo"></i> Reiniciar';
+            } else {
+                nextBtn.innerHTML = '<i class="fas fa-arrow-right"></i> Siguiente';
+            }
+            
+            // Efecto de confeti en mensajes especiales
+            if (index === 0 || index === 3 || index === messages.length - 1) {
+                createConfetti();
+            }
+        }
+        
+        nextBtn.addEventListener('click', function() {
+            // Efecto en el botón
+            nextBtn.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                nextBtn.style.transform = 'scale(1)';
+            }, 150);
+            
+            // Avanzar mensaje
+            currentIndex++;
+            if (currentIndex >= messages.length) {
+                currentIndex = 0;
+            }
+            
+            showMessage(currentIndex);
+        });
+        
+        // Crear confeti
+        function createConfetti() {
+            const colors = ['#ff006e', '#8a6bff', '#ffd166', '#06d6a0'];
+            
+            for (let i = 0; i < 20; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'fixed';
+                confetti.style.width = '8px';
+                confetti.style.height = '8px';
+                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                confetti.style.left = Math.random() * 100 + 'vw';
+                confetti.style.top = '-20px';
+                confetti.style.zIndex = '5';
+                confetti.style.pointerEvents = 'none';
+                confetti.style.boxShadow = '0 0 5px rgba(255, 255, 255, 0.5)';
+                
+                document.body.appendChild(confetti);
+                
+                // Animación
+                const animation = confetti.animate([
+                    { transform: 'translateY(0) rotate(0deg)', opacity: 1 },
+                    { transform: `translateY(${window.innerHeight}px) rotate(${Math.random() * 720}deg)`, opacity: 0 }
+                ], {
+                    duration: Math.random() * 2000 + 1500,
+                    easing: 'cubic-bezier(0.215, 0.610, 0.355, 1)'
+                });
+                
+                animation.onfinish = () => confetti.remove();
+            }
+        }
+        
+        // Inicializar
+        console.log("🎂 ¡Página lista para Isa!");
+        console.log("📸 Tus 7 fotos ya están incluidas");
+        console.log("💝 7 mensajes especiales preparados");
+    </script>
+</body>
+</html>
